@@ -20,20 +20,22 @@ if(w!=0):
     os.system('rm -rf Imagenesrecortadas')
 #Creamos el directorio en el cual vamos a guardar las imagenes recortadas
 os.system('mkdir Imagenesrecortadas ')
-#Guardamos en numero.dat el numero de archivos con el nombre deseado
-os.system(' ls -l|grep BSR_bsds500.tgz|wc -l > numero.dat')
-#Leemos este numero
-x=np.loadtxt("numero.dat")
-#Verificamos si el archivo no ha sido descargado
-if(x==0):
-   os.system(' wget www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz')
+  
 #Guardamos en numero.dat el numero de archivos llamado BSR
 os.system('ls -l|grep -w "BSR"|wc -l > numero.dat')
 #Leemos este numero
 y=np.loadtxt("numero.dat")
 #Verificamos que el archivo no haya sido descomprimido
 if(y==0):
+    #Guardamos en numero.dat el numero de archivos con el nombre deseado
+    os.system(' ls -l|grep BSR_bsds500.tgz|wc -l > numero.dat')
+    #Leemos este numero
+    x=np.loadtxt("numero.dat")
+    #Verificamos si el archivo no ha sido descargado
+    if(x==0):
+        os.system(' wget www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz')
     os.system(' tar -xzvf BSR_bsds500.tgz')
+    
 #Ahora que ya tenemos los datos vamos a guardar los nombres de las imagenes del test en una lista de la cual luego elegimos algunos al azar.
 os.system('ls ./BSR/BSDS500/data/images/test > test.dat')
 #Ahora cargamos dicha lista
