@@ -39,7 +39,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Bark1Tra=[]
 for i in nom:
-    Bark1Tra.append( Image.open(r'./Data/T01_bark1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Bark1Tra.append(np.asarray(Image.open(r'./Data/T01_bark1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
     
 #Bark2
@@ -54,7 +54,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Bark2Tra=[]
 for i in nom:
-    Bark2Tra.append( Image.open(r'./Data/T02_bark2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Bark2Tra.append(np.asarray(Image.open(r'./Data/T02_bark2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Bark3
@@ -69,7 +69,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Bark3Tra=[]
 for i in nom:
-    Bark3Tra.append( Image.open(r'./Data/T03_bark3Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Bark3Tra.append( np.asarray(Image.open(r'./Data/T03_bark3Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 
@@ -85,7 +85,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Wood1Tra=[]
 for i in nom:
-    Wood1Tra.append( Image.open(r'./Data/T04_wood1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Wood1Tra.append( np.asarray(Image.open(r'./Data/T04_wood1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 
@@ -101,7 +101,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Wood2Tra=[]
 for i in nom:
-    Wood2Tra.append( Image.open(r'./Data/T05_wood2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Wood2Tra.append( np.asarray(Image.open(r'./Data/T05_wood2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Wood3
@@ -116,7 +116,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Wood3Tra=[]
 for i in nom:
-    Wood3Tra.append( Image.open(r'./Data/T06_wood3Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Wood3Tra.append( np.asarray(Image.open(r'./Data/T06_wood3Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 #Water
 #GUardamos los nombres de las imagenes del Training
@@ -130,7 +130,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 WaterTra=[]
 for i in nom:
-    WaterTra.append( Image.open(r'./Data/T07_waterTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    WaterTra.append( np.asarray(Image.open(r'./Data/T07_waterTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 
@@ -146,7 +146,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 GraniteTra=[]
 for i in nom:
-    GraniteTra.append( Image.open(r'./Data/T08_graniteTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    GraniteTra.append( np.asarray(Image.open(r'./Data/T08_graniteTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Marble
@@ -161,7 +161,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 MarbleTra=[]
 for i in nom:
-    MarbleTra.append( Image.open(r'./Data/T09_marbleTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    MarbleTra.append( np.asarray(Image.open(r'./Data/T09_marbleTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 #Floor1
 #GUardamos los nombres de las imagenes del Training
@@ -175,7 +175,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Floor1Tra=[]
 for i in nom:
-    Floor1Tra.append( Image.open(r'./Data/T10_floor1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Floor1Tra.append( np.asarray(Image.open(r'./Data/T10_floor1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Floor2
@@ -190,7 +190,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Floor2Tra=[]
 for i in nom:
-    Floor2Tra.append( Image.open(r'./Data/T11_floor2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Floor2Tra.append( np.asarray(Image.open(r'./Data/T11_floor2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Pebbles
@@ -205,7 +205,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 PebblesTra=[]
 for i in nom:
-    PebblesTra.append( Image.open(r'./Data/T12_pebblesTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    PebblesTra.append( np.asarray(Image.open(r'./Data/T12_pebblesTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Wall
@@ -220,7 +220,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 WallTra=[]
 for i in nom:
-    WallTra.append( Image.open(r'./Data/T13_wallTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    WallTra.append( np.asarray(Image.open(r'./Data/T13_wallTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Brick1
@@ -235,7 +235,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Brick1Tra=[]
 for i in nom:
-    Brick1Tra.append( Image.open(r'./Data/T14_brick1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Brick1Tra.append( np.asarray(Image.open(r'./Data/T14_brick1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Brick2
@@ -250,7 +250,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Brick2Tra=[]
 for i in nom:
-    Brick2Tra.append( Image.open(r'./Data/T15_brick2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Brick2Tra.append( np.asarray(Image.open(r'./Data/T15_brick2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Glass1
@@ -265,7 +265,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Glass1Tra=[]
 for i in nom:
-    Glass1Tra.append( Image.open(r'./Data/T16_glass1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Glass1Tra.append( np.asarray(Image.open(r'./Data/T16_glass1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Glass2
@@ -280,7 +280,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Glass2Tra=[]
 for i in nom:
-    Glass2Tra.append( Image.open(r'./Data/T17_glass2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Glass2Tra.append( np.asarray(Image.open(r'./Data/T17_glass2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Carpet1
@@ -295,7 +295,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Carpet1Tra=[]
 for i in nom:
-    Carpet1Tra.append( Image.open(r'./Data/T18_carpet1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Carpet1Tra.append( np.asarray(Image.open(r'./Data/T18_carpet1Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Carpet2
@@ -310,7 +310,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 Carpet2Tra=[]
 for i in nom:
-    Carpet2Tra.append( Image.open(r'./Data/T19_carpet2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    Carpet2Tra.append( np.asarray(Image.open(r'./Data/T19_carpet2Tra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Upholstery
@@ -325,7 +325,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 UpholsteryTra=[]
 for i in nom:
-    UpholsteryTra.append( Image.open(r'./Data/T20_upholsteryTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    UpholsteryTra.append( np.asarray(Image.open(r'./Data/T20_upholsteryTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Wallpaper
@@ -340,7 +340,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 WallpaperTra=[]
 for i in nom:
-    WallpaperTra.append( Image.open(r'./Data/T21_wallpaperTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    WallpaperTra.append( np.asarray(Image.open(r'./Data/T21_wallpaperTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Fur
@@ -355,7 +355,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 FurTra=[]
 for i in nom:
-    FurTra.append( Image.open(r'./Data/T22_furTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    FurTra.append( np.asarray(Image.open(r'./Data/T22_furTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Knit
@@ -370,7 +370,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 KnitTra=[]
 for i in nom:
-    KnitTra.append( Image.open(r'./Data/T23_knitTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    KnitTra.append( np.asarray(Image.open(r'./Data/T23_knitTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Corduroy
@@ -385,7 +385,7 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 CorduroyTra=[]
 for i in nom:
-    CorduroyTra.append( Image.open(r'./Data/T24_corduroyTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    CorduroyTra.append( np.asarray(Image.open(r'./Data/T24_corduroyTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
 
 
 #Plaid
@@ -400,8 +400,229 @@ nom=[s.replace('\n','') for s in data]
 #Ahora cargamos las imagenes
 PlaidTra=[]
 for i in nom:
-    PlaidTra.append( Image.open(r'./Data/T25_plaidTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1)))
+    PlaidTra.append( np.asarray(Image.open(r'./Data/T25_plaidTra/'+str(i)).convert("L").crop((csi0,csi1,cid0,cid1))))
+
+print("Fase de carga completada")
 
 
 
 
+###########################################################################################################################
+
+
+#Definimos el numero de textones a sacar
+k=5*25
+from fbRun import fbRun
+#Hacemos listas con las respuestas a filtros de los distintos materiales
+#Bark1
+filterResponsesBark1Tra=[]
+for i in Bark1Tra:
+    filterResponsesBark1Tra.append(fbRun(fb,i))
+print("Filtro 1")
+
+#Bark2
+filterResponsesBark2Tra=[]
+for i in Bark2Tra:
+    filterResponsesBark2Tra.append(fbRun(fb,i))
+print("Filtro 1")
+
+#Bark3
+filterResponsesBark3Tra=[]
+for i in Bark3Tra:
+    filterResponsesBark3Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Wood1
+filterResponsesWood1Tra=[]
+for i in Wood1Tra:
+    filterResponsesWood1Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Wood2
+filterResponsesWood2Tra=[]
+for i in Wood2Tra:
+    filterResponsesWood2Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Wood3
+filterResponsesWood3Tra=[]
+for i in Wood3Tra:
+    filterResponsesWood3Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Water
+filterResponsesWaterTra=[]
+for i in WaterTra:
+    filterResponsesWaterTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Granite
+filterResponsesGraniteTra=[]
+for i in GraniteTra:
+    filterResponsesGraniteTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Marble
+filterResponsesMarbleTra=[]
+for i in MarbleTra:
+    filterResponsesMarbleTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Floor1
+filterResponsesFloor1Tra=[]
+for i in Floor1Tra:
+    filterResponsesFloor1Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Floor2
+filterResponsesFloor2Tra=[]
+for i in Floor2Tra:
+    filterResponsesFloor2Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Pebbles
+filterResponsesPebblesTra=[]
+for i in PebblesTra:
+    filterResponsesPebblesTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Wall
+filterResponsesWallTra=[]
+for i in WallTra:
+    filterResponsesWallTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Brick1
+filterResponsesBrick1Tra=[]
+for i in Brick1Tra:
+    filterResponsesBrick1Tra.append(fbRun(fb,i))
+
+
+print("Filtro 1")
+#Brick2
+filterResponsesBrick2Tra=[]
+for i in Brick2Tra:
+    filterResponsesBrick2Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Glass1
+filterResponsesGlass1Tra=[]
+for i in Glass1Tra:
+    filterResponsesGlass1Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Glass2
+filterResponsesGlass2Tra=[]
+for i in Glass2Tra:
+    filterResponsesGlass2Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Carpet1
+filterResponsesCarpet1Tra=[]
+for i in Carpet1Tra:
+    filterResponsesCarpet1Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Carpet2
+filterResponsesCarpet2Tra=[]
+for i in Carpet2Tra:
+    filterResponsesCarpet2Tra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Upholstery
+filterResponsesUpholsteryTra=[]
+for i in UpholsteryTra:
+    filterResponsesUpholsteryTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Wallpaper
+filterResponsesWallpaperTra=[]
+for i in WallpaperTra:
+    filterResponsesWallpaperTra.append(fbRun(fb,i))
+
+print("Filtro 1")
+#Fur
+filterResponsesFurTra=[]
+for i in FurTra:
+    filterResponsesFurTra.append(fbRun(fb,i))
+print("Filtro 1")
+#Knit
+filterResponsesKnitTra=[]
+for i in KnitTra:
+    filterResponsesKnitTra.append(fbRun(fb,i))
+print("Filtro 1")
+#Corduroy
+filterResponsesCorduroyTra=[]
+for i in CorduroyTra:
+    filterResponsesCorduroyTra.append(fbRun(fb,i))
+print("Filtro 1")
+#Plaid
+filterResponsesPlaidTra=[]
+for i in PlaidTra:
+    filterResponsesPlaidTra.append(fbRun(fb,i))
+print("Fin inicializacion filtros")
+
+#Ahora debo unir todas las respuestas de los filtros en una sola super imagen para cada filtro
+
+Nfilas=np.asarray(filterResponsesBark1Tra[0]).shape[0]
+Ncolumnas=np.asarray(filterResponsesBark1Tra[0]).shape[1]
+
+filterResponses=filterResponsesBark1Tra[0]
+
+for i in range(Nfilas):
+    for j in range(Ncolumnas):
+        for p in range(1,len(filterResponsesBark1Tra)):
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],filterResponsesBark1Tra[p][i][j]))
+        for p in filterResponsesBark2Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesBark3Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesWood1Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesWood2Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesWood3Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesWaterTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesGraniteTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesMarbleTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesFloor1Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesFloor2Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesPebblesTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesWallTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesBrick1Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesBrick2Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesGlass1Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesGlass2Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesCarpet1Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesCarpet2Tra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesUpholsteryTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesWallpaperTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesFurTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesKnitTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesCorduroyTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+        for p in filterResponsesPlaidTra:
+            filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
+
+
+plt.figure()
+plt.imshow(np.asarray(filterResponses[5][0]),cmap="gray")
+plt.savefig("Cosa.jpg")
