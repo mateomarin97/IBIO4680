@@ -1,0 +1,8 @@
+import sys
+sys.path.append('/home/nathan/VisionporComputador/Mirepositorio/IBIO4680/05-Textons/lib/python')
+
+#Create a filter bank with deafult params
+from fbCreate import fbCreate
+fb = fbCreate()
+import numpy as np
+import matplotlib.pyplot as plt
