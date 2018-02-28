@@ -1,0 +1,7 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+hist=np.loadtxt("Histograma.dat")
+plt.figure()
+plt.hist(hist)
+plt.savefig("Histograma.jpg")
