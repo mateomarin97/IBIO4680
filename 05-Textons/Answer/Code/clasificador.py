@@ -810,6 +810,6 @@ for i in range(1,Numerohistogramas):
     histBark3Tra= histBark3Tra+histc(tmapBark3Tra[i].flatten(),np.arange(k))/Factor
 histBark3Tra=histBark3Tra/Numerohistogramas
     
-
+np.savetxt("Histograma.dat",np.array(histBark3Tra))
 
 
