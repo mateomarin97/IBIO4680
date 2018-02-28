@@ -623,6 +623,193 @@ for i in range(Nfilas):
             filterResponses[i][j]=np.hstack((filterResponses[i][j],p[i][j]))
 
 
-plt.figure()
-plt.imshow(np.asarray(filterResponses[5][0]),cmap="gray")
-plt.savefig("Cosa.jpg")
+print("Filtros fusionados")
+
+#Computer textons from filter
+#Textons tiene los centros de masa de cada texton
+#map es la imagen ya expresada en textones
+from computeTextons import computeTextons
+map, textons = computeTextons(filterResponses, k)
+
+print("Textones creados")
+#Asignamos los textones
+from assignTextons import assignTextons
+
+#Bark1
+tmapBark1Tra=[]
+for i in filterResponsesBark1Tra:
+    tmapBark1Tra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Bark2
+tmapBark2Tra=[]
+for i in filterResponsesBark2Tra:
+    tmapBark2Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Bark3
+tmapBark3Tra=[]
+for i in filterResponsesBark3Tra:
+    tmapBark3Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Wood1
+tmapWood1Tra=[]
+for i in filterResponsesWood1Tra:
+    tmapWood1Tra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Wood2
+tmapWood2Tra=[]
+for i in filterResponsesWood2Tra:
+    tmapWood2Tra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Wood3
+tmapWood3Tra=[]
+for i in filterResponsesWood3Tra:
+    tmapWood3Tra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Water
+tmapWaterTra=[]
+for i in filterResponsesWaterTra:
+    tmapWaterTra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Granite
+tmapGraniteTra=[]
+for i in filterResponsesGraniteTra:
+    tmapGraniteTra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Marble
+tmapMarbleTra=[]
+for i in filterResponsesMarbleTra:
+    tmapMarbleTra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Floor1
+tmapFloor1Tra=[]
+for i in filterResponsesFloor1Tra:
+    tmapFloor1Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Floor2
+tmapFloor2Tra=[]
+for i in filterResponsesFloor2Tra:
+    tmapFloor2Tra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Pebbles
+tmapPebblesTra=[]
+for i in filterResponsesPebblesTra:
+    tmapPebblesTra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Wall
+tmapWallTra=[]
+for i in filterResponsesWallTra:
+    tmapWallTra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Brick1
+tmapBrick1Tra=[]
+for i in filterResponsesBrick1Tra:
+    tmapBrick1Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Brick2
+tmapBrick2Tra=[]
+for i in filterResponsesBrick2Tra:
+    tmapBrick2Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Glass1
+tmapGlass1Tra=[]
+for i in filterResponsesGlass1Tra:
+    tmapGlass1Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+
+#Glass2
+tmapGlass2Tra=[]
+for i in filterResponsesGlass2Tra:
+    tmapGlass2Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+
+#Carpet1
+tmapCarpet1Tra=[]
+for i in filterResponsesCarpet1Tra:
+    tmapCarpet1Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Carpet2
+tmapCarpet2Tra=[]
+for i in filterResponsesCarpet2Tra:
+    tmapCarpet2Tra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Upholstery
+tmapUpholsteryTra=[]
+for i in filterResponsesUpholsteryTra:
+    tmapUpholsteryTra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+
+#Wallpaper
+tmapWallpaperTra=[]
+for i in filterResponsesWallpaperTra:
+    tmapWallpaperTra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Fur
+tmapFurTra=[]
+for i in filterResponsesFurTra:
+    tmapFurTra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Knit
+tmapKnitTra=[]
+for i in filterResponsesKnitTra:
+    tmapKnitTra.append(assignTextons(i,textons.transpose()))
+
+print("Texton asignado")
+#Corduroy
+tmapCorduroyTra=[]
+for i in filterResponsesCorduroyTra:
+    tmapCorduroyTra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+#Plaid
+tmapPlaidTra=[]
+for i in filterResponsesPlaidTra:
+    tmapPlaidTra.append(assignTextons(i,textons.transpose()))
+print("Texton asignado")
+
+
+##################################################################################
+
+#Esta funcion pasa la matriz de textones a un histograma
+def histc(X, bins):
+    map_to_bins = np.digitize(X,bins)
+    r = np.zeros(bins.shape)
+    for i in map_to_bins:
+        r[i-1] += 1
+    return np.array(r)
+####################################################################################
+
+#Ahora sacamos los histogramas que definen cada clase
+Factor=tmapBark1Tra[0].size
+Numerohistogramas=len(tmapBark1)
+
+#Bark1
+histBark1Tra=histc(tmapBark1Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histBark1Tra= histBark1Tra+histc(tmapBark1Tra[i].flatten(),np.arange(k))/Factor
+histBark1Tra=histBark1Tra/Numerohistogramas
+
+
+#Bark2
+histBark2Tra=histc(tmapBark2Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histBark2Tra= histBark2Tra+histc(tmapBark2Tra[i].flatten(),np.arange(k))/Factor
+histBark2Tra=histBark2Tra/Numerohistogramas
+
+
+#Bark3
+histBark3Tra=histc(tmapBark3Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histBark3Tra= histBark3Tra+histc(tmapBark3Tra[i].flatten(),np.arange(k))/Factor
+histBark3Tra=histBark3Tra/Numerohistogramas
+    
+
+
+
