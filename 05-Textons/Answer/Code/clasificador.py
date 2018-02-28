@@ -788,7 +788,7 @@ def histc(X, bins):
 
 #Ahora sacamos los histogramas que definen cada clase
 Factor=tmapBark1Tra[0].size
-Numerohistogramas=len(tmapBark1)
+Numerohistogramas=len(tmapBark1Tra)
 
 #Bark1
 histBark1Tra=histc(tmapBark1Tra[0].flatten(),np.arange(k))/Factor
@@ -810,6 +810,49 @@ for i in range(1,Numerohistogramas):
     histBark3Tra= histBark3Tra+histc(tmapBark3Tra[i].flatten(),np.arange(k))/Factor
 histBark3Tra=histBark3Tra/Numerohistogramas
     
-np.savetxt("Histograma.dat",np.array(histBark3Tra))
+#np.savetxt("Histograma.dat",np.array(histBark3Tra))
+
+#Wood1
+histWood1Tra=histc(tmapWood1Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histWood1Tra= histWood1Tra+histc(tmapWood1Tra[i].flatten(),np.arange(k))/Factor
+histWood1Tra=histWood1Tra/Numerohistogramas
+
+#Wood2
+histWood2Tra=histc(tmapWood2Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histWood2Tra= histWood2Tra+histc(tmapWood2Tra[i].flatten(),np.arange(k))/Factor
+histWood2Tra=histWood2Tra/Numerohistogramas
 
 
+#Wood3
+histWood3Tra=histc(tmapWood3Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histWood3Tra= histWood3Tra+histc(tmapWood3Tra[i].flatten(),np.arange(k))/Factor
+histWood3Tra=histWood3Tra/Numerohistogramas
+
+#Water
+histWaterTra=histc(tmapWaterTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histWaterTra= histWaterTra+histc(tmapWaterTra[i].flatten(),np.arange(k))/Factor
+histWaterTra=histWaterTra/Numerohistogramas
+
+
+#Granite
+histGraniteTra=histc(tmapGraniteTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histGraniteTra= histGraniteTra+histc(tmapGraniteTra[i].flatten(),np.arange(k))/Factor
+histGraniteTra=histGraniteTra/Numerohistogramas
+
+
+#Marble
+histMarbleTra=histc(tmapMarbleTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histMarbleTra= histMarbleTra+histc(tmapMarbleTra[i].flatten(),np.arange(k))/Factor
+histMarbleTra=histMarbleTra/Numerohistogramas
+
+#Floor1
+histFloor1Tra=histc(tmapFloor1Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histFloor1Tra= histFloor1Tra+histc(tmapFloor1Tra[i].flatten(),np.arange(k))/Factor
+histFloor1Tra=histFloor1Tra/Numerohistogramas
