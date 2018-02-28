@@ -796,63 +796,169 @@ for i in range(1,Numerohistogramas):
     histBark1Tra= histBark1Tra+histc(tmapBark1Tra[i].flatten(),np.arange(k))/Factor
 histBark1Tra=histBark1Tra/Numerohistogramas
 
-
+print("Histograma listo")
 #Bark2
 histBark2Tra=histc(tmapBark2Tra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histBark2Tra= histBark2Tra+histc(tmapBark2Tra[i].flatten(),np.arange(k))/Factor
 histBark2Tra=histBark2Tra/Numerohistogramas
 
-
+print("Histograma listo")
 #Bark3
 histBark3Tra=histc(tmapBark3Tra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histBark3Tra= histBark3Tra+histc(tmapBark3Tra[i].flatten(),np.arange(k))/Factor
 histBark3Tra=histBark3Tra/Numerohistogramas
     
-#np.savetxt("Histograma.dat",np.array(histBark3Tra))
 
+print("Histograma listo")
 #Wood1
 histWood1Tra=histc(tmapWood1Tra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histWood1Tra= histWood1Tra+histc(tmapWood1Tra[i].flatten(),np.arange(k))/Factor
 histWood1Tra=histWood1Tra/Numerohistogramas
 
+print("Histograma listo")
 #Wood2
 histWood2Tra=histc(tmapWood2Tra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histWood2Tra= histWood2Tra+histc(tmapWood2Tra[i].flatten(),np.arange(k))/Factor
 histWood2Tra=histWood2Tra/Numerohistogramas
 
-
+print("Histograma listo")
 #Wood3
 histWood3Tra=histc(tmapWood3Tra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histWood3Tra= histWood3Tra+histc(tmapWood3Tra[i].flatten(),np.arange(k))/Factor
 histWood3Tra=histWood3Tra/Numerohistogramas
 
+print("Histograma listo")
 #Water
 histWaterTra=histc(tmapWaterTra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histWaterTra= histWaterTra+histc(tmapWaterTra[i].flatten(),np.arange(k))/Factor
 histWaterTra=histWaterTra/Numerohistogramas
 
-
+print("Histograma listo")
 #Granite
 histGraniteTra=histc(tmapGraniteTra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histGraniteTra= histGraniteTra+histc(tmapGraniteTra[i].flatten(),np.arange(k))/Factor
 histGraniteTra=histGraniteTra/Numerohistogramas
 
-
+print("Histograma listo")
 #Marble
 histMarbleTra=histc(tmapMarbleTra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histMarbleTra= histMarbleTra+histc(tmapMarbleTra[i].flatten(),np.arange(k))/Factor
 histMarbleTra=histMarbleTra/Numerohistogramas
 
+print("Histograma listo")
 #Floor1
 histFloor1Tra=histc(tmapFloor1Tra[0].flatten(),np.arange(k))/Factor
 for i in range(1,Numerohistogramas):
     histFloor1Tra= histFloor1Tra+histc(tmapFloor1Tra[i].flatten(),np.arange(k))/Factor
 histFloor1Tra=histFloor1Tra/Numerohistogramas
+
+print("Histograma listo")
+#Floor2
+histFloor2Tra=histc(tmapFloor2Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histFloor2Tra= histFloor2Tra+histc(tmapFloor2Tra[i].flatten(),np.arange(k))/Factor
+histFloor2Tra=histFloor2Tra/Numerohistogramas
+
+print("Histograma listo")
+#Pebbles
+histPebblesTra=histc(tmapPebblesTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histPebblesTra= histPebblesTra+histc(tmapPebblesTra[i].flatten(),np.arange(k))/Factor
+histPebblesTra=histPebblesTra/Numerohistogramas
+
+print("Histograma listo")
+#Brick1
+histBrick1Tra=histc(tmapBrick1Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histBrick1Tra= histBrick1Tra+histc(tmapBrick1Tra[i].flatten(),np.arange(k))/Factor
+histBrick1Tra=histBrick1Tra/Numerohistogramas
+
+print("Histograma listo")
+#Brick2
+histBrick2Tra=histc(tmapBrick2Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histBrick2Tra= histBrick2Tra+histc(tmapBrick2Tra[i].flatten(),np.arange(k))/Factor
+histBrick2Tra=histBrick2Tra/Numerohistogramas
+
+print("Histograma listo")
+#Glass1
+histGlass1Tra=histc(tmapGlass1Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histGlass1Tra= histGlass1Tra+histc(tmapGlass1Tra[i].flatten(),np.arange(k))/Factor
+histGlass1Tra=histGlass1Tra/Numerohistogramas
+
+print("Histograma listo")
+#Glass2
+histGlass2Tra=histc(tmapGlass2Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histGlass2Tra= histGlass2Tra+histc(tmapGlass2Tra[i].flatten(),np.arange(k))/Factor
+histGlass2Tra=histGlass2Tra/Numerohistogramas
+
+print("Histograma listo")
+#Carpet1
+histCarpet1Tra=histc(tmapCarpet1Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histCarpet1Tra= histCarpet1Tra+histc(tmapCarpet1Tra[i].flatten(),np.arange(k))/Factor
+histCarpet1Tra=histCarpet1Tra/Numerohistogramas
+
+print("Histograma listo")
+#Carpet2
+histCarpet2Tra=histc(tmapCarpet2Tra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histCarpet2Tra= histCarpet2Tra+histc(tmapCarpet2Tra[i].flatten(),np.arange(k))/Factor
+histCarpet2Tra=histCarpet2Tra/Numerohistogramas
+
+print("Histograma listo")
+#Upholstery
+histUpholsteryTra=histc(tmapUpholsteryTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histUpholsteryTra= histUpholsteryTra+histc(tmapUpholsteryTra[i].flatten(),np.arange(k))/Factor
+histUpholsteryTra=histUpholsteryTra/Numerohistogramas
+
+print("Histograma listo")
+#Wallpaper
+histWallpaperTra=histc(tmapWallpaperTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histWallpaperTra= histWallpaperTra+histc(tmapWallpaperTra[i].flatten(),np.arange(k))/Factor
+histWallpaperTra=histWallpaperTra/Numerohistogramas
+
+print("Histograma listo")
+#Fur
+histFurTra=histc(tmapFurTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histFurTra= histFurTra+histc(tmapFurTra[i].flatten(),np.arange(k))/Factor
+histFurTra=histFurTra/Numerohistogramas
+
+print("Histograma listo")
+#Knit
+histKnitTra=histc(tmapKnitTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histKnitTra= histKnitTra+histc(tmapKnitTra[i].flatten(),np.arange(k))/Factor
+histKnitTra=histKnitTra/Numerohistogramas
+
+print("Histograma listo")
+#Corduroy
+histCorduroyTra=histc(tmapCorduroyTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histCorduroyTra= histCorduroyTra+histc(tmapCorduroyTra[i].flatten(),np.arange(k))/Factor
+histCorduroyTra=histCorduroyTra/Numerohistogramas
+
+print("Histograma listo")
+#Plaid
+histPlaidTra=histc(tmapPlaidTra[0].flatten(),np.arange(k))/Factor
+for i in range(1,Numerohistogramas):
+    histPlaidTra= histPlaidTra+histc(tmapPlaidTra[i].flatten(),np.arange(k))/Factor
+histPlaidTra=histPlaidTra/Numerohistogramas
+
+
+np.savetxt("Histograma.dat",np.array(histBark3Tra))
+
+print("Listos todos los histogramas")
