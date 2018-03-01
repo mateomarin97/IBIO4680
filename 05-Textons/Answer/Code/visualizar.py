@@ -5,9 +5,10 @@ a=a/np.sum(a)
 b=np.array([2.0,2.0,2.0])
 hist=np.loadtxt("Histograma.dat")
 plt.figure()
-plt.hist(hist)
+plt.hist(hist,bins=125)
 plt.savefig("Histograma.jpg")
-
-print(np.sum(hist))
-print(a)
-print(a+b)
+c=np.zeros((25,25))
+for i in range(25):
+    for j in range(25):
+        c[i][j]=i
+print(c[:,0])
