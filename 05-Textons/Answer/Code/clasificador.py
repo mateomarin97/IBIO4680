@@ -877,6 +877,12 @@ for i in range(1,Numerohistogramas):
     histPebblesTra= histPebblesTra+histc(tmapPebblesTra[i].flatten(),np.arange(k))
 histPebblesTra=histPebblesTra/np.sum(histPebblesTra)
 
+#Wall
+histWallTra=histc(tmapWallTra[0].flatten(),np.arange(k))
+for i in range(1,Numerohistogramas):
+    histWallTra= histWallTra+histc(tmapWallTra[i].flatten(),np.arange(k))
+histWallTra=histWallTra/np.sum(histWallTra)
+
 print("Histograma listo")
 #Brick1
 histBrick1Tra=histc(tmapBrick1Tra[0].flatten(),np.arange(k))
