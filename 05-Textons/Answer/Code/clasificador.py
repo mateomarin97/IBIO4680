@@ -1696,7 +1696,7 @@ print("Histograma listo")
 #Definimos el kernel de la interseccion
 def kernelint(A,B):
     if(len(A)!=len(B)):
-        print("Error, los dos histogramas deben tener el mismo tamaño")
+        print("Error, los dos histogramas deben tener el mismo tamano")
     else:
         suma=0
         for i in range(len(A)):
