@@ -1937,7 +1937,131 @@ ACA=float(ACA)/float(25)
 #Guardamos el ACA
 np.savetxt("ACA_"+"k="+str(k)+"_Pixel="+str(Npix)+".dat",np.array([ACA]))
 
+#################################################################################################################################
+#Esto en cuanto a lo que respecta a kvecinos ahora hagamos un random forest. Cada feature va a ser el numero de ocurrencias de un texton en
+#la imagen
+from sklearn.ensemble import RandomForestClassifier
+#Empecemos por hacer la lista de labels
+labels=[]
+for j in range(1,26):
+    for i in range(len(Bark1Tra)):
+        labels.append(j)
+#Ahora hacemos una lista con los vectores del numero de textones de cada clase para cada una de las imagenes del Training. Esta informacion
+#la tienen los histogramas del Training, mala cosa que los fusione en uno solo.
+vectores=[]
+#Bark1
+for i in tmapBark1Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
 
+#Bark2
+for i in tmapBark2Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Bark3
+for i in tmapBark3Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Wood1
+for i in tmapWood1Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Wood2
+for i in tmapWood2Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Wood3
+for i in tmapWood3Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Water
+for i in tmapWaterTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Granite
+for i in tmapGraniteTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Marble
+for i in tmapMarbleTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Floor1
+for i in tmapFloor1Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Floor2
+for i in tmapFloor2Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Pebbles
+for i in tmapPebblesTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Wall
+for i in tmapWallTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Brick1
+for i in tmapBrick1Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Brick2
+for i in tmapBrick2Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Glass1
+for i in tmapGlass1Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Glass2
+for i in tmapGlass2Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Carpet1
+for i in tmapCarpet1Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Carpet2
+for i in tmapCarpet2Tra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Upholstery
+for i in tmapUpholsteryTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Wallpaper
+for i in tmapWallpaperTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Fur
+for i in tmapFurTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Knit
+for i in tmapKnitTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Corduroy
+for i in tmapCorduroyTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Plaid
+for i in tmapPlaidTra:
+    vectores.append(histc(i.flatten(),np.arange(k)))
+
+#Ahora hacemos los arboles
+
+rf = RandomForestClassifier(n_estimators=50,max_depth=100)
+rf.fit(vectores, labels)
+
+#Hacemos la prediccion del Training
+predictionTra = rf.predict(vectores)
+
+
+
+
+
+        
 
 
 
