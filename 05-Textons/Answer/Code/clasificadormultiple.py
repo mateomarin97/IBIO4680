@@ -2352,8 +2352,8 @@ for f in ListaNpix:
 
 		    
 		#Ahora hacemos los arboles
-		Narboles=[50]
-		Profundidad=[100]
+		Narboles=[50,75,100]
+		Profundidad=[50,75,100]
 
 		for u in Narboles:
 		    for p in Profundidad:
