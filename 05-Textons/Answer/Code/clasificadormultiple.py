@@ -93,8 +93,8 @@ def cuenta(numero,lista):
 ancho=480
 largo=640
 
-ListaNpix=[80,90,100,110]
-Listak=[100,125,150,175,200]
+ListaNpix=[80,90]
+Listak=[25,50,75,90]
 
 for f in ListaNpix:
 
@@ -2352,8 +2352,8 @@ for f in ListaNpix:
 
 		    
 		#Ahora hacemos los arboles
-		Narboles=[50,75,100]
-		Profundidad=[50,75,100]
+		Narboles=[50,75,100,125]
+		Profundidad=[25,50,75,100]
 
 		for u in Narboles:
 		    for p in Profundidad:
