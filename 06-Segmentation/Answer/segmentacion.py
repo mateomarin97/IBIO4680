@@ -48,7 +48,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
 filename = "./BSDS_tiny/24063.jpg"
 Imagen1 = io.imread(filename)
 #Hagamos varios k
-valoresk=[2,5,10,15,20,25,30,35,40,45,50]
+valoresk=[3]
 for w in valoresk:
     Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'kmeans', w)
     np.savetxt("Segmentacion"+str(w)+".dat",Segmentacion1)

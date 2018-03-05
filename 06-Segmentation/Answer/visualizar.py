@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-a=np.loadtxt("Segmentacion1.dat")
+valoresk=[3]
+for i in valoresk:
+	a=np.loadtxt("Segmentacion"+str(i)+".dat")
 
-plt.figure()
-plt.imshow(a,cmap='inferno')
-plt.savefig("Segmentacion1.jpg")
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacion"+str(i)+".jpg")
