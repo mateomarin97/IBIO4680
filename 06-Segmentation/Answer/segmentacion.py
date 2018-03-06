@@ -120,7 +120,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         #Lo primero es calcular la matriz de minimos locales de la Imagen a blanco y negro.
         Matrizminimos=minimolocal(Imagenbn)
         #Ahora creamos la mascara de marcadores
-        markers=np.zeros((Imagenbn.shape[0],Imagenbn.shape[1]),int)
+        markers=np.zeros((Imagenbn.shape[0],Imagenbn.shape[1]),np.int32)
         #Ahora alteramos la matriz de marcadores de forma tal que cada minimo local tenga un entero diferente representandolo en ella, y
         #aquellos que no son minimos locales sean ceros
         entero=1
