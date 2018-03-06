@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-valoresk=[1]
+valoresk=[2,3]
 for i in valoresk:
-	a=np.loadtxt("Segmentacionwatershed.dat")
+	a=np.loadtxt("Segmentacion"+str(i)+".dat")
 
 	plt.figure()
 	plt.imshow(a,cmap='inferno')
-	plt.savefig("Segmentacionwatershed.jpg")
+	plt.savefig("Segmentacion"+str(i)+".jpg")
