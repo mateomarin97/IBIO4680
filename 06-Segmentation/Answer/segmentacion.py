@@ -143,12 +143,12 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         ancho=Imagen.shape[0]
         largo=Imagen.shape[1]
         #Debemos cortar la imagen y para ello determinamos de que dimensiones la queremos
-        Npix=325
+        Npix=300
         csi0=int(0)
         csi1=int(0)
         cid0=int(min(Npix,ancho))
         cid1=int(min(Npix,largo))
-        Imagen=np.asarray(Image.open(filename).crop((csi0,csi1,cid0,cid1)))
+        Imagen=np.asarray(Image.fromarray(Imagen).crop((csi0,csi1,cid0,cid1)))
         #Tambien obtenemos la imagen a blanco y negro
         Imagenbn=rgb2gray(Imagen)
         #Ahora vamos a representar cada pixel en el espacio rgb mas intensidad, para ello tenemos la lista vectores con todos los vectores
@@ -162,6 +162,9 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         jerar = linkage(vectores, 'ward')
         map=fcluster(jerar, k, criterion='maxclust')
         segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
+
+	#Me parece apropiado que el metodo de jerarquia tambien devuelva la jerarquia
+	return jerar
                 
             
         
@@ -180,11 +183,22 @@ filename = "./BSDS_tiny/24063.jpg"
 Imagen1 = io.imread(filename)
 #Imagen1 = cv2.imread(filename)
 #Hagamos varios k
-valoresk=[2,3]
-for w in valoresk:
-    Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'hierarchical', w)
-    np.savetxt("Segmentacion"+str(w)+".dat",Segmentacion1)
+valoresk=[3,4,5,6,7,8,9]
+#for w in valoresk:
+    #Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'hierarchical', w)
+    #np.savetxt("Segmentacion"+str(w)+".dat",Segmentacion1)
 #Segmentacion1=segmentByClustering( Imagen1,'rgb' ,'watershed', 1)
 #np.savetxt("Segmentacionwatershed.dat",Segmentacion1)
+jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'rgb', 'hierarchical', 2)
+np.savetxt("Segmentacion2.dat",Segmentacion2)
+for w in valoresk:
+    map=fcluster(jerarquia, w, criterion='maxclust')
+    seg = map.reshape(Imagen1.shape[0],Imagen1.shape[1])
+    np.savetxt("Segmentacion"+str(w)+".dat",seg)
+
+
+	
+
+
 
 
