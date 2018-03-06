@@ -190,10 +190,90 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         map = kmeans.labels_
         segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
         return segmentation
+
+
+    #Ahora lab con gmm
+    if featureSpace=='lab'and clusteringMethod=='gmm':
+        Imagen=color.rgb2lab(rgbImage)
+        #El primer canal viene siendo la imagen a blanco y negro, va de 0 a 100 asi que cuando la vaya a cargar en la lista de vectores
+        #la multiplico por 255/100=2.55 para que vaya de cero a 255
+        #El segundo canal es el a que va de -128 a 127, asi que cuando lo ponga en la lista de vectores le sumo 127 para que vaya de 0 a 255
+        #El tercero es el b tambien va de -128 a 127.
+        #Ahora vamos a representar cada pixel en el espacio rgb mas intensidad, para ello tenemos la lista vectores con todos los vectores
+        vectores=[]
+        for i in range(Imagen.shape[0]):
+            for j in range(Imagen.shape[1]):
+                #aux es el vector de representacion del pixel,va asi, r,g,b,Intensidad
+                aux=[int(Imagen[i][j][0]*2.55),Imagen[i][j][1]+128,Imagen[i][j][2]+128]
+                vectores.append(aux)
+        #Ahora que tenemos los puntos pasamos a hacer gmm
+        gmm=GaussianMixture(n_components=k).fit(np.array(vectores))
+        #Ahora obtenemos el mapa de la imagen
+        map=gmm.predict(np.array(vectores))
+        segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
+        return segmentation
+
+
+    #Ahora lab con watershed
+    if featureSpace=='lab'and clusteringMethod=='watershed':
+        #Para usar watershed importe la imagen con cv2, no io
+        Imagen=cv2.cvtColor(rgbImage, cv2.COLOR_BGR2LAB)
+        #En este caso cv2 ya escala los canales L,A,B para ir de 0 a 255
+        #Hacemos la imagen de luminosidad
+        Imagenbn=Imagen[:,:,0]
+        #Watershed es ciego al color (en este caso), asi que solo voy a trabajar con la imagen a blanco y negro.
+        #Voy a hacer el watershed tipico en el cual cada minimo local es un punto por donde empiezo a inundar, intente poner un
+        #umbral para no marcar lineas divisoras de agua bajas pero no lo puede hacer en la funcion de cv2.
+        #Lo primero es calcular la matriz de minimos locales de la Imagen a blanco y negro.
+        Matrizminimos=minimolocal(Imagenbn)
+        #Ahora creamos la mascara de marcadores
+        markers=np.zeros((Imagenbn.shape[0],Imagenbn.shape[1]),np.int32)
+        #Ahora alteramos la matriz de marcadores de forma tal que cada minimo local tenga un entero diferente representandolo en ella, y
+        #aquellos que no son minimos locales sean ceros
+        entero=1
+        for i in range(Matrizminimos.shape[0]):
+            for j in range(Matrizminimos.shape[1]):
+                if Matrizminimos[i][j]==1:
+                    markers[i][j]=entero
+                    entero=entero+1
+        #Ahora que tenemos la matriz de marcadores hacemos watershed
+        segmentation = cv2.watershed(Imagen,markers)
+        return segmentation
         
 
        
-        
+
+
+    #Ahora lab con hierarchical
+    if featureSpace=='lab'and clusteringMethod=='hierarchical':
+        Imagen=color.rgb2lab(rgbImage)
+        #El primer canal viene siendo la imagen a blanco y negro, va de 0 a 100 asi que cuando la vaya a cargar en la lista de vectores
+        #la multiplico por 255/100=2.55 para que vaya de cero a 255
+        #El segundo canal es el a que va de -128 a 127, asi que cuando lo ponga en la lista de vectores le sumo 127 para que vaya de 0 a 255
+        #El tercero es el b tambien va de -128 a 127.
+        ancho=Imagen.shape[0]
+        largo=Imagen.shape[1]
+        #Debemos cortar la imagen y para ello determinamos de que dimensiones la queremos
+        Npix=300
+        csi0=int(0)
+        csi1=int(0)
+        cid0=int(min(Npix,ancho))
+        cid1=int(min(Npix,largo))
+        Imagen=np.asarray(Image.fromarray(Imagen).crop((csi0,csi1,cid0,cid1)))
+        #Ahora vamos a representar cada pixel en el espacio lab , para ello tenemos la lista vectores con todos los vectores
+        vectores=[]
+        for i in range(Imagen.shape[0]):
+            for j in range(Imagen.shape[1]):
+                #aux es el vector de representacion del pixel,va asi, r,g,b,Intensidad
+                aux=[int(Imagen[i][j][0]*2.55),Imagen[i][j][1]+128,Imagen[i][j][2]+128]
+                vectores.append(aux)
+        #Ahora que tenemos los datos podemos hacer la jerarquia
+        jerar = linkage(vectores, 'ward')
+        map=fcluster(jerar, k, criterion='maxclust')
+        segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
+
+	#Me parece apropiado que el metodo de jerarquia tambien devuelva la jerarquia
+        return jerar, segmentation
 
 
 
@@ -215,7 +295,7 @@ jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'rgb', 'hierarchical', 2)
 np.savetxt("Segmentacion2.dat",Segmentacion2)
 for w in valoresk:
     map=fcluster(jerarquia, w, criterion='maxclust')
-    seg = map.reshape(Imagen1.shape[0],Imagen1.shape[1])
+    seg = map.reshape(300,300)
     np.savetxt("Segmentacion"+str(w)+".dat",seg)
 
 
