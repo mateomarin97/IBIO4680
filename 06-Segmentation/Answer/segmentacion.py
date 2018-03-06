@@ -308,13 +308,13 @@ valoresk=[2,3,4,5,6,7,8,9]
 for w in valoresk:
     Segmentacion1=segmentByClustering( Imagen1, 'lab', 'kmeans', w)
     np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
-    Segmentacion1=segmentByClustering( Imagen1, 'lab', 'gmm', w)
-    np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
+    #Segmentacion1=segmentByClustering( Imagen1, 'lab', 'gmm', w)
+    #np.savetxt("Segmentacionlabkgmm"+str(w)+".dat",Segmentacion1)
 
-Segmentacion1=segmentByClustering( Imagen1,'lab' ,'watershed', 1)
-np.savetxt("Segmentacionlabwatershed.dat",Segmentacion1)
+#Segmentacion1=segmentByClustering( Imagen1,'lab' ,'watershed', 1)
+#np.savetxt("Segmentacionlabwatershed.dat",Segmentacion1)
 
-Imagen1 = cv2.imread(filename)
+
 jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'lab', 'hierarchical', 2)
 np.savetxt("Segmentacionlabjerarquia2.dat",Segmentacion2)
 for w in valoresk:
