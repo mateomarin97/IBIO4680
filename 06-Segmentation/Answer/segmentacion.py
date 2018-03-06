@@ -143,7 +143,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         ancho=Imagen.shape[0]
         largo=Imagen.shape[1]
         #Debemos cortar la imagen y para ello determinamos de que dimensiones la queremos
-        Npix=350
+        Npix=300
         csi0=int(0)
         csi1=int(0)
         cid0=int(min(Npix,ancho))
