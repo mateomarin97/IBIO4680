@@ -246,7 +246,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
 
     #Ahora lab con hierarchical
     if featureSpace=='lab'and clusteringMethod=='hierarchical':
-        Imagen=color.rgb2lab(rgbImage)
+        Imagen=rgbImage
         #El primer canal viene siendo la imagen a blanco y negro, va de 0 a 100 asi que cuando la vaya a cargar en la lista de vectores
         #la multiplico por 255/100=2.55 para que vaya de cero a 255
         #El segundo canal es el a que va de -128 a 127, asi que cuando lo ponga en la lista de vectores le sumo 127 para que vaya de 0 a 255
@@ -260,6 +260,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         cid0=int(min(Npix,ancho))
         cid1=int(min(Npix,largo))
         Imagen=np.asarray(Image.fromarray(Imagen).crop((csi0,csi1,cid0,cid1)))
+        Imagen=color.rgb2lab(Imagen)
         #Ahora vamos a representar cada pixel en el espacio lab , para ello tenemos la lista vectores con todos los vectores
         vectores=[]
         for i in range(Imagen.shape[0]):
@@ -305,9 +306,9 @@ Imagen1 = io.imread(filename)
 
 #Hagamos varios k
 valoresk=[2,3,4,5,6,7,8,9]
-for w in valoresk:
-    Segmentacion1=segmentByClustering( Imagen1, 'lab', 'kmeans', w)
-    np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
+#for w in valoresk:
+    #Segmentacion1=segmentByClustering( Imagen1, 'lab', 'kmeans', w)
+    #np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
     #Segmentacion1=segmentByClustering( Imagen1, 'lab', 'gmm', w)
     #np.savetxt("Segmentacionlabkgmm"+str(w)+".dat",Segmentacion1)
 

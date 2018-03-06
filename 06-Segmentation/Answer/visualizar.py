@@ -6,10 +6,10 @@ for i in valoresk:
 
 	plt.figure()
 	plt.imshow(a,cmap='inferno')
-	plt.savefig("Segmentacionlabgmm"+str(i)+".jpg")
+	plt.savefig("Segmentacionlabkmeans"+str(i)+".jpg")
 	
 	
-a=np.loadtxt("Segmentacionlabwatershed.dat")
-plt.figure()
-plt.imshow(a,cmap='inferno')
-plt.savefig("Segmentacionlabwatershed.jpg")
+#a=np.loadtxt("Segmentacionlabwatershed.dat")
+#plt.figure()
+#plt.imshow(a,cmap='inferno')
+#plt.savefig("Segmentacionlabwatershed.jpg")
