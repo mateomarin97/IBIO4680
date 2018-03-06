@@ -164,7 +164,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
 
 	#Me parece apropiado que el metodo de jerarquia tambien devuelva la jerarquia
-	return jerar
+        return jerar
                 
             
         
