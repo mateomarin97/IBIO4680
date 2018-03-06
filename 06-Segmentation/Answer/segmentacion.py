@@ -140,15 +140,15 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
     #Ahora rgb con hierarchical
     if featureSpace=='rgb'and clusteringMethod=='hierarchical':
         Imagen=rgbImage
-        #ancho=Imagen.shape[0]
-        #largo=Imagen.shape[1]
+        ancho=Imagen.shape[0]
+        largo=Imagen.shape[1]
         #Debemos cortar la imagen y para ello determinamos de que dimensiones la queremos
-        #Npix=300
-        #csi0=int(ancho*0.5 +1.0 - Npix*0.5)
-        #csi1=int(largo*0.5 +1.0 - Npix*0.5)
-        #cid0=int(ancho*0.5 -1.0 +Npix*0.5)
-        #cid1=int(largo*0.5 -1.0 +Npix*0.5)
-        #Imagen=np.asarray(Image.open(filename).crop((csi0,csi1,cid0,cid1)))
+        Npix=400
+        csi0=int(0)
+        csi1=int(0)
+        cid0=int(min(Npix,ancho))
+        cid1=int(min(Npix,largo))
+        Imagen=np.asarray(Image.open(filename).crop((csi0,csi1,cid0,cid1)))
         #Tambien obtenemos la imagen a blanco y negro
         Imagenbn=rgb2gray(Imagen)
         #Ahora vamos a representar cada pixel en el espacio rgb mas intensidad, para ello tenemos la lista vectores con todos los vectores
