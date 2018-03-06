@@ -6,6 +6,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage import io, color
 import cv2
+from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.cluster.hierarchy import fcluster
+from PIL import Image
+
 
 #Funcion para pasar de rgb a escala de grises tomada de
 #https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
@@ -131,6 +135,33 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
                     entero=entero+1
         #Ahora que tenemos la matriz de marcadores hacemos watershed
         segmentation = cv2.watershed(Imagen,markers)
+
+
+    #Ahora rgb con hierarchical
+    if featureSpace=='rgb'and clusteringMethod=='hierarchical':
+        Imagen=rgbImage
+        ancho=Imagen.shape[0]
+        largo=Imagen.shape[1]
+        #Debemos cortar la imagen y para ello determinamos de que dimensiones la queremos
+        Npix=10
+        csi0=int(ancho*0.5 +1.0 - Npix*0.5)
+        csi1=int(largo*0.5 +1.0 - Npix*0.5)
+        cid0=int(ancho*0.5 -1.0 +Npix*0.5)
+        cid1=int(largo*0.5 -1.0 +Npix*0.5)
+        Imagen=np.asarray(Image.open(filename).crop((csi0,csi1,cid0,cid1)))
+        #Tambien obtenemos la imagen a blanco y negro
+        Imagenbn=rgb2gray(Imagen)
+        #Ahora vamos a representar cada pixel en el espacio rgb mas intensidad, para ello tenemos la lista vectores con todos los vectores
+        vectores=[]
+        for i in range(Imagen.shape[0]):
+            for j in range(Imagen.shape[1]):
+                #aux es el vector de representacion del pixel,va asi, r,g,b,Intensidad
+                aux=[Imagen[i][j][0],Imagen[i][j][1],Imagen[i][j][2],Imagenbn[i][j]]
+                vectores.append(aux)
+        #Ahora que tenemos los datos podemos hacer la jerarquia
+        jerar = linkage(vectores, 'ward')
+        map=fcluster(jerar, k, criterion='maxclust')
+        segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
                 
             
         
@@ -146,14 +177,14 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         
 #Probemos una imagen
 filename = "./BSDS_tiny/24063.jpg"
-#Imagen1 = io.imread(filename)
-Imagen1 = cv2.imread(filename)
+Imagen1 = io.imread(filename)
+#Imagen1 = cv2.imread(filename)
 #Hagamos varios k
-#valoresk=[2,4,5,6,7,8,9,10]
-#for w in valoresk:
-    #Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'gmm', w)
-    #np.savetxt("Segmentacion"+str(w)+".dat",Segmentacion1)
-Segmentacion1=segmentByClustering( Imagen1,'rgb' ,'watershed', 1)
-np.savetxt("Segmentacionwatershed.dat",Segmentacion1)
+valoresk=[2,3]
+for w in valoresk:
+    Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'hierarchical', w)
+    np.savetxt("Segmentacion"+str(w)+".dat",Segmentacion1)
+#Segmentacion1=segmentByClustering( Imagen1,'rgb' ,'watershed', 1)
+#np.savetxt("Segmentacionwatershed.dat",Segmentacion1)
 
 
