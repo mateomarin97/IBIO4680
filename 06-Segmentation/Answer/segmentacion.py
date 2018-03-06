@@ -89,7 +89,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         #Tenemos el mapa de segmentacion,hay que dejarlo como una matriz de nuevo
         map = kmeans.labels_
         segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
-
+        return segmentation
 
 
         
@@ -110,7 +110,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         #Ahora obtenemos el mapa de la imagen
         map=gmm.predict(np.array(vectores))
         segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
-
+        return segmentation
 
     #Ahora rgb con watershed
     if featureSpace=='rgb'and clusteringMethod=='watershed':
@@ -135,7 +135,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
                     entero=entero+1
         #Ahora que tenemos la matriz de marcadores hacemos watershed
         segmentation = cv2.watershed(Imagen,markers)
-
+        return segmentation
 
     #Ahora rgb con hierarchical
     if featureSpace=='rgb'and clusteringMethod=='hierarchical':
@@ -164,10 +164,32 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
         segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
 
 	#Me parece apropiado que el metodo de jerarquia tambien devuelva la jerarquia
-        return jerar
+        return jerar, segmentation
+    
                 
             
-        
+
+    #Ahora kmeans con lab
+
+    if featureSpace=='lab'and clusteringMethod=='kmeans':
+        Imagen=color.rgb2lab(rgbImage)
+        #El primer canal viene siendo la imagen a blanco y negro, va de 0 a 100 asi que cuando la vaya a cargar en la lista de vectores
+        #la multiplico por 255/100=2.55 para que vaya de cero a 255
+        #El segundo canal es el a que va de -128 a 127, asi que cuando lo ponga en la lista de vectores le sumo 127 para que vaya de 0 a 255
+        #El tercero es el b tambien va de -128 a 127.
+        #Ahora vamos a representar cada pixel en el espacio rgb mas intensidad, para ello tenemos la lista vectores con todos los vectores
+        vectores=[]
+        for i in range(Imagen.shape[0]):
+            for j in range(Imagen.shape[1]):
+                #aux es el vector de representacion del pixel,va asi, r,g,b,Intensidad
+                aux=[int(Imagen[i][j][0]*2.55),Imagen[i][j][1]+128,Imagen[i][j][2]+128]
+                vectores.append(aux)
+        #Ahora que tenemos los puntos pasamos a hacer kmeans:
+        kmeans = KMeans(n_clusters=k, n_init=1, max_iter=100).fit(np.array(vectores))
+        #Tenemos el mapa de segmentacion,hay que dejarlo como una matriz de nuevo
+        map = kmeans.labels_
+        segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
+        return segmentation
         
 
        
@@ -175,7 +197,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
 
 
 
-    return segmentation
+   
                 
         
 #Probemos una imagen
