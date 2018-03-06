@@ -275,6 +275,25 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
 	#Me parece apropiado que el metodo de jerarquia tambien devuelva la jerarquia
         return jerar, segmentation
 
+    #Empezamos con hsv y kmeans
+    if featureSpace=='hsv'and clusteringMethod=='kmeans':
+        Imagen=color.rgb2hsv(rgbImage)
+        #Los canales HSV, van de 0 a 1, los multiplico por 255 para pasar de 0 a 255
+        #Ahora vamos a representar cada pixel en el espacio hsv , para ello tenemos la lista vectores con todos los vectores, ademas
+        #quiero que H y V sean mas importantes que S, para eso hago las distancias en S mas grandes para que no las vea de a mucho
+        factorescalaS=30
+        vectores=[]
+        for i in range(Imagen.shape[0]):
+            for j in range(Imagen.shape[1]):
+                #aux es el vector de representacion del pixel,va asi, r,g,b,Intensidad
+                aux=[Imagen[i][j][0]*255,Imagen[i][j][1]*255*factorescalaS,Imagen[i][j][2]*255]
+                vectores.append(aux)
+        #Ahora que tenemos los puntos pasamos a hacer kmeans:
+        kmeans = KMeans(n_clusters=k, n_init=1, max_iter=100).fit(np.array(vectores))
+        #Tenemos el mapa de segmentacion,hay que dejarlo como una matriz de nuevo
+        map = kmeans.labels_
+        segmentation = map.reshape(Imagen.shape[0],Imagen.shape[1])
+        return segmentation
 
 
    
@@ -283,20 +302,25 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
 #Probemos una imagen
 filename = "./BSDS_tiny/24063.jpg"
 Imagen1 = io.imread(filename)
-#Imagen1 = cv2.imread(filename)
+
 #Hagamos varios k
-valoresk=[3,4,5,6,7,8,9]
-#for w in valoresk:
-    #Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'hierarchical', w)
-    #np.savetxt("Segmentacion"+str(w)+".dat",Segmentacion1)
-#Segmentacion1=segmentByClustering( Imagen1,'rgb' ,'watershed', 1)
-#np.savetxt("Segmentacionwatershed.dat",Segmentacion1)
-jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'rgb', 'hierarchical', 2)
-np.savetxt("Segmentacion2.dat",Segmentacion2)
+valoresk=[2,3,4,5,6,7,8,9]
+for w in valoresk:
+    Segmentacion1=segmentByClustering( Imagen1, 'lab', 'kmeans', w)
+    np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
+    Segmentacion1=segmentByClustering( Imagen1, 'lab', 'gmm', w)
+    np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
+
+Segmentacion1=segmentByClustering( Imagen1,'lab' ,'watershed', 1)
+np.savetxt("Segmentacionlabwatershed.dat",Segmentacion1)
+
+Imagen1 = cv2.imread(filename)
+jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'lab', 'hierarchical', 2)
+np.savetxt("Segmentacionlabjerarquia2.dat",Segmentacion2)
 for w in valoresk:
     map=fcluster(jerarquia, w, criterion='maxclust')
     seg = map.reshape(300,300)
-    np.savetxt("Segmentacion"+str(w)+".dat",seg)
+    np.savetxt("Segmentacionlabjerarquia"+str(w)+".dat",seg)
 
 
 	
