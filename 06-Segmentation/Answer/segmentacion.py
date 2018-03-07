@@ -716,7 +716,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
                 
         
 #Probemos una imagen
-filename = "./BSDS_tiny/24063.jpg"
+filename = "./BSDS_tiny/55067.jpg"
 Imagen1 = io.imread(filename)
 
 #Hagamos varios k
@@ -773,6 +773,63 @@ for w in valoresk:
     map=fcluster(jerarquia, w, criterion='maxclust')
     seg = map.reshape(300,300)
     np.savetxt("Segmentacionhsvxyjerarquia"+str(w)+".dat",seg)
+
+
+
+###############################################################################################
+###############################################################################################
+for w in valoresk:
+    Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'kmeans', w)
+    np.savetxt("Segmentacionrgbkmeans"+str(w)+".dat",Segmentacion1)
+    Segmentacion1=segmentByClustering( Imagen1, 'rgb', 'gmm', w)
+    np.savetxt("Segmentacionrgbgmm"+str(w)+".dat",Segmentacion1)
+
+Segmentacion1=segmentByClustering( Imagen1,'rgb' ,'watershed', 1)
+np.savetxt("Segmentacionrgbwatershed.dat",Segmentacion1)
+
+
+for w in valoresk:
+    Segmentacion1=segmentByClustering( Imagen1, 'lab', 'kmeans', w)
+    np.savetxt("Segmentacionlabkmeans"+str(w)+".dat",Segmentacion1)
+    Segmentacion1=segmentByClustering( Imagen1, 'lab', 'gmm', w)
+    np.savetxt("Segmentacionlabgmm"+str(w)+".dat",Segmentacion1)
+
+Segmentacion1=segmentByClustering( Imagen1,'lab' ,'watershed', 1)
+np.savetxt("Segmentacionlabwatershed.dat",Segmentacion1)
+
+
+for w in valoresk:
+    Segmentacion1=segmentByClustering( Imagen1, 'hsv', 'kmeans', w)
+    np.savetxt("Segmentacionhsvkmeans"+str(w)+".dat",Segmentacion1)
+    Segmentacion1=segmentByClustering( Imagen1, 'hsv', 'gmm', w)
+    np.savetxt("Segmentacionhsvgmm"+str(w)+".dat",Segmentacion1)
+
+Segmentacion1=segmentByClustering( Imagen1,'hsv' ,'watershed', 1)
+np.savetxt("Segmentacionhsvwatershed.dat",Segmentacion1)
+
+
+
+jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'rgb', 'hierarchical', 2)
+np.savetxt("Segmentacionrgbjerarquia2.dat",Segmentacion2)
+for w in valoresk:
+    map=fcluster(jerarquia, w, criterion='maxclust')
+    seg = map.reshape(300,300)
+    np.savetxt("Segmentacionrgbjerarquia"+str(w)+".dat",seg)
+
+
+jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'lab', 'hierarchical', 2)
+np.savetxt("Segmentacionlabjerarquia2.dat",Segmentacion2)
+for w in valoresk:
+    map=fcluster(jerarquia, w, criterion='maxclust')
+    seg = map.reshape(300,300)
+    np.savetxt("Segmentacionlabjerarquia"+str(w)+".dat",seg)
+
+jerarquia,Segmentacion2=segmentByClustering( Imagen1, 'hsv', 'hierarchical', 2)
+np.savetxt("Segmentacionhsvjerarquia2.dat",Segmentacion2)
+for w in valoresk:
+    map=fcluster(jerarquia, w, criterion='maxclust')
+    seg = map.reshape(300,300)
+    np.savetxt("Segmentacionhsvjerarquia"+str(w)+".dat",seg)
 
 
 	
