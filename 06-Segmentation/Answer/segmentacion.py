@@ -719,7 +719,7 @@ def segmentByClustering( rgbImage, featureSpace, clusteringMethod, numberOfClust
 filename = "./BSDS_tiny/24063.jpg"
 Imagen1 = io.imread(filename)
 
-Hagamos varios k
+#Hagamos varios k
 valoresk=[2,3,4,5,6,7,8,9]
 for w in valoresk:
     Segmentacion1=segmentByClustering( Imagen1, 'rgb+xy', 'kmeans', w)
