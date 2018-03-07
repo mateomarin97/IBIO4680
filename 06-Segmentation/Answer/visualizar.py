@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 valoresk=[2,3,4,5,6,7,8,9]
+
 for i in valoresk:
 	a=np.loadtxt("Segmentacionhsvjerarquia"+str(i)+".dat")
 
@@ -19,6 +20,7 @@ for i in valoresk:
 	plt.figure()
 	plt.imshow(a,cmap='inferno')
 	plt.savefig("Segmentacionhsvkmeans"+str(i)+".jpg")
+
 	
 a=np.loadtxt("Segmentacionhsvwatershed.dat")
 plt.figure()
