@@ -90,3 +90,104 @@ plt.figure()
 plt.imshow(a,cmap='inferno')
 plt.savefig("Segmentacionlabxywatershed.jpg")
 plt.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+for i in valoresk:
+	a=np.loadtxt("Segmentacionhsvjerarquia"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionhsvjerarquia"+str(i)+".jpg")
+	plt.close()
+	
+	a=np.loadtxt("Segmentacionhsvgmm"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionhsvgmm"+str(i)+".jpg")
+	plt.close()
+
+	a=np.loadtxt("Segmentacionhsvkmeans"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionhsvkmeans"+str(i)+".jpg")
+	plt.close()
+
+
+
+
+
+	a=np.loadtxt("Segmentacionrgbjerarquia"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionrgbjerarquia"+str(i)+".jpg")
+	plt.close()
+	a=np.loadtxt("Segmentacionrgbgmm"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionrgbgmm"+str(i)+".jpg")
+	plt.close()
+	a=np.loadtxt("Segmentacionrgbkmeans"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionrgbkmeans"+str(i)+".jpg")
+	plt.close()
+
+
+
+
+	a=np.loadtxt("Segmentacionlabjerarquia"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionlabjerarquia"+str(i)+".jpg")
+	plt.close()
+	a=np.loadtxt("Segmentacionlabgmm"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionlabgmm"+str(i)+".jpg")
+	plt.close()
+	a=np.loadtxt("Segmentacionlabkmeans"+str(i)+".dat")
+
+	plt.figure()
+	plt.imshow(a,cmap='inferno')
+	plt.savefig("Segmentacionlabkmeans"+str(i)+".jpg")
+	plt.close()
+
+
+	
+a=np.loadtxt("Segmentacionhsvwatershed.dat")
+plt.figure()
+plt.imshow(a,cmap='inferno')
+plt.savefig("Segmentacionhsvwatershed.jpg")
+plt.close()
+
+
+
+a=np.loadtxt("Segmentacionrgbwatershed.dat")
+plt.figure()
+plt.imshow(a,cmap='inferno')
+plt.savefig("Segmentacionrgbwatershed.jpg")
+plt.close()
+
+a=np.loadtxt("Segmentacionlabwatershed.dat")
+plt.figure()
+plt.imshow(a,cmap='inferno')
+plt.savefig("Segmentacionlabwatershed.jpg")
+plt.close()
