@@ -755,7 +755,7 @@ nimagenesseg=float(len(nombresval)+len(nombrestest)+len(nombrestrain))
 #Definimos un contador de cuantas llevamos
 contadorima=0
 
-valoresk=range(2,100)
+valoresk=range(2,50)
                
         
 #Probemos las imagenes del train
@@ -767,6 +767,7 @@ for o in nombrestrain:
     for w in valoresk:
         listakmeans.append(segmentByClustering( Imagen1, 'rgb', 'kmeans', w))
         listagmm.append(segmentByClustering( Imagen1, 'rgb', 'gmm', w))
+        print("K="+str(w))
     np.savetxt("./missegmentaciones/Training/kmeans/"+str(o)+".mat",np.array(listakmeans))
     np.savetxt("./missegmentaciones/Training/gmm/"+str(o)+".mat",np.array(listagmm))
     contadorima=contadorima+1
