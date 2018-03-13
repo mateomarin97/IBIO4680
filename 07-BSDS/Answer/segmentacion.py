@@ -750,11 +750,13 @@ nombresval=[s.replace('.jpg','') for s in nombresval]
 nombresval.pop()
 
 
-    
-
+#Definimos el numero total de imagenes a segmentar
+nimagenesseg=float(len(nombresval)+len(nombrestest)+len(nombrestrain))
+#Definimos un contador de cuantas llevamos
+contadorima=0
 
 valoresk=range(2,200)
-                
+               
         
 #Probemos las imagenes del train
 for o in nombrestrain:
@@ -767,6 +769,8 @@ for o in nombrestrain:
         listagmm.append(segmentByClustering( Imagen1, 'rgb', 'gmm', w))
     np.savetxt("./missegmentaciones/Training/kmeans/"+str(o)+".mat",np.array(listakmeans))
     np.savetxt("./missegmentaciones/Training/gmm/"+str(o)+".mat",np.array(listagmm))
+    contadorima=contadorima+1
+    print(float(contadorima/nimagenesseg)*100.0)
 
 
 
@@ -782,6 +786,8 @@ for o in nombrestest:
         listagmm.append(segmentByClustering( Imagen1, 'rgb', 'gmm', w))
     np.savetxt("./missegmentaciones/Test/kmeans/"+str(o)+".mat",np.array(listakmeans))
     np.savetxt("./missegmentaciones/Test/gmm/"+str(o)+".mat",np.array(listagmm))
+    contadorima=contadorima+1
+    print(float(contadorima/nimagenesseg)*100.0)
 
 
 
@@ -797,6 +803,8 @@ for o in nombresval:
         listagmm.append(segmentByClustering( Imagen1, 'rgb', 'gmm', w))
     np.savetxt("./missegmentaciones/Validation/kmeans/"+str(o)+".mat",np.array(listakmeans))
     np.savetxt("./missegmentaciones/Validation/gmm/"+str(o)+".mat",np.array(listagmm))
+    contadorima=contadorima+1
+    print(float(contadorima/nimagenesseg)*100.0)
 
     
 
