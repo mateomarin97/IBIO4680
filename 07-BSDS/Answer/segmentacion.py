@@ -755,7 +755,7 @@ nimagenesseg=float(len(nombresval)+len(nombrestest)+len(nombrestrain))
 #Definimos un contador de cuantas llevamos
 contadorima=0
 
-valoresk=range(2,200)
+valoresk=range(2,100)
                
         
 #Probemos las imagenes del train
