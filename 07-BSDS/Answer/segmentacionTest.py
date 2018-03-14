@@ -800,7 +800,7 @@ for o in nombrestest:
     for w in valoresk:
         listakmeans.append(segmentByClustering( Imagen1, 'rgb', 'kmeans', w))
         listagmm.append(segmentByClustering( Imagen1, 'rgb', 'gmm', w))
-	print("K="+str(w))
+        print("K="+str(w))
     listakmeans=np.array(listakmeans)
     listagmm=np.array(listagmm)
     #Toca volver estas listas matrices 2D porque sino no los puedo guardar
